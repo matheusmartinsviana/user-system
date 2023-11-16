@@ -114,6 +114,28 @@ public class User {
         }
     }
 
+    public static void viewEmails() {
+        try {
+            Connection connManager = DriverManager
+                    .getConnection(
+                            "jdbc:mysql://localhost:3306/userSchema",
+                            "root",
+                            "");
+            System.out.println("Connected in Database : userSchema");
+            PreparedStatement ps = connManager.prepareStatement("SELECT user.id, user.email FROM userSchema.user ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String email = rs.getString("email");
+                System.out.println("User ID: " + id +" | "+ email);
+            }
+            rs.close();
+            connManager.close();
+        } catch (SQLException erro) {
+            System.out.println(erro.getMessage());
+        }
+    }
+
     public boolean login() {
         boolean loggedIn = false;
 

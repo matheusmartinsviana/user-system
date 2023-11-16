@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-
+        
         int indice = 0;
 
         do {
@@ -12,8 +12,9 @@ public class Main {
             System.out.println("1 : Create user");
             System.out.println("2 : Update user");
             System.out.println("3 : Delete user");
-            System.out.println("4 : View user(s) ");
+            System.out.println("4 : View user(s)");
             System.out.println("5 : Login");
+            System.out.println("6 : View email(s)");
             new User(0, null, null, null);
 
             indice = scan.nextInt();
@@ -61,6 +62,10 @@ public class Main {
                     password = scan.next();
                     User loginUser = new User(0, null, email, password);
                     loginUser.login();
+                    break;
+
+                case 6:
+                    User.viewEmails();
                     break;
 
                 default:
